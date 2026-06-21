@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>90-Day Business Roadmap — AM Business Coaching</title>
+<meta name="description" content="Build your personalised 90-day business roadmap. Set goals, identify focus areas, and get a custom action plan — free."/>
+<meta property="og:title" content="Free 90-Day Business Roadmap — AM Business Coaching"/>
+<meta property="og:description" content="Set strategic goals. Build systems. Scale with intention. Get your personalised roadmap in 5 minutes."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#0D1B2A;
+  --teal:#00B4A6;
+  --teal-light:#E0F5F4;
+  --teal-dark:#085041;
+  --gold:#F5A623;
+  --gold-light:#FEF6E4;
+  --gold-dark:#633806;
+  --coral:#E8534A;
+  --coral-light:#FEF0EF;
+  --sage:#4CAF88;
+  --sage-light:#EAF6F1;
+  --sage-dark:#085041;
+  --gray:#F4F7F6;
+  --gray-mid:#8A9BAD;
+  --gray-border:#DDE3E8;
+  --text:#0D1B2A;
+  --text-mid:#4A5568;
+  --text-light:#8A9BAD;
+  --white:#FFFFFF;
+  --radius:10px;
+  --radius-sm:6px;
+  --shadow:0 1px 3px rgba(13,27,42,.08),0 0 0 1px rgba(13,27,42,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Inter',sans-serif;background:#F0F4F3;color:var(--text);min-height:100vh;line-height:1.6}
+.page{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:24px 16px 60px}
+.card{background:var(--white);border-radius:16px;box-shadow:var(--shadow);width:100%;max-width:620px;overflow:hidden}
+.hidden{display:none!important}
+
+/* topbar */
+.topbar{width:100%;max-width:620px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-dot{width:28px;height:28px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center}
+.logo-dot svg{width:14px;height:14px;fill:white}
+.logo-name{font-size:13px;font-weight:600;color:var(--navy);letter-spacing:-.01em}
+.logo-sub{font-size:11px;color:var(--text-light)}
+.topbar-right{font-size:12px;color:var(--text-light)}
+
+/* progress */
+.progress-wrap{padding:20px 24px 0}
+.progress-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--text-light);margin-bottom:8px}
+.progress-meta strong{color:var(--text-mid)}
+.progress-track{height:5px;background:var(--gray);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;border-radius:99px;background:var(--teal);transition:width .4s cubic-bezier(.4,0,.2,1)}
+.phase-tabs{display:flex;gap:4px;padding:12px 24px 0}
+.phase-tab{flex:1;height:4px;border-radius:99px;background:var(--gray);transition:background .3s}
+.phase-tab.done{background:var(--teal)}
+.phase-tab.active{background:var(--navy)}
+
+/* intro hero */
+.intro-hero{background:var(--navy);padding:36px 28px 28px;position:relative;overflow:hidden}
+.intro-hero::after{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:rgba(0,180,166,.1)}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;letter-spacing:.06em;color:var(--teal);background:rgba(0,180,166,.12);padding:4px 10px;border-radius:99px;margin-bottom:16px}
+.hero-tag span{width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block}
+.intro-title{font-family:'Fraunces',serif;font-size:28px;font-weight:600;color:white;line-height:1.2;margin-bottom:12px;position:relative;z-index:1}
+.intro-title em{color:var(--teal);font-style:normal}
+.intro-desc{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:20px}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px}
+.meta-chip{font-size:11px;font-weight:500;padding:4px 10px;border-radius:99px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7)}
+.phase-preview{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
+.phase-chip{border-radius:var(--radius-sm);padding:10px 10px 8px;border:1px solid rgba(255,255,255,.1)}
+.phase-chip-label{font-size:9px;font-weight:600;letter-spacing:.06em;opacity:.7;margin-bottom:2px}
+.phase-chip-title{font-size:12px;font-weight:500;color:white}
+.phase-chip-days{font-size:10px;opacity:.5;margin-top:1px}
+
+/* lead form */
+.intro-body{padding:24px 28px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.field-row.full{grid-template-columns:1fr}
+.field-row.three{grid-template-columns:1fr 1fr 1fr}
+.field-label{font-size:12px;font-weight:500;color:var(--text-mid);margin-bottom:5px}
+.field-label span{color:var(--coral);margin-left:2px}
+input[type=text],input[type=email],input[type=tel],select,textarea{
+  width:100%;padding:10px 12px;font-size:13px;font-family:'Inter',sans-serif;
+  color:var(--text);background:var(--gray);border:1.5px solid transparent;
+  border-radius:var(--radius-sm);outline:none;transition:border-color .2s,background .2s;
+  appearance:none;-webkit-appearance:none;
+}
+input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus,select:focus,textarea:focus{background:white;border-color:var(--teal)}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A9BAD' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+textarea{resize:vertical;min-height:72px;line-height:1.5}
+.consent-row{display:flex;align-items:flex-start;gap:10px;padding:12px;background:var(--gray);border-radius:var(--radius-sm);margin:16px 0}
+.consent-row input[type=checkbox]{width:16px;height:16px;margin-top:1px;accent-color:var(--teal);flex-shrink:0;cursor:pointer}
+.consent-text{font-size:12px;color:var(--text-mid);line-height:1.5}
+.consent-text a{color:var(--teal);text-decoration:none}
+.btn-start{width:100%;padding:14px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;background:var(--navy);color:white;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:background .2s;letter-spacing:-.01em}
+.btn-start:hover{background:#1a2e44}
+.btn-start:active{transform:scale(.99)}
+.trust-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:14px}
+.trust-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-light)}
+.trust-item svg{width:13px;height:13px}
+
+/* phase screen */
+.phase-hero{padding:22px 24px 16px;border-bottom:1px solid var(--gray-border)}
+.phase-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.06em;padding:3px 10px;border-radius:99px;margin-bottom:10px}
+.phase-title{font-size:18px;font-weight:600;color:var(--navy);margin-bottom:2px}
+.phase-theme{font-size:13px;font-weight:500;margin-bottom:4px}
+.phase-desc{font-size:12px;color:var(--text-light);line-height:1.5}
+.phase-body{padding:18px 20px}
+
+/* questions */
+.q-block{margin-bottom:18px}
+.q-label{font-size:12px;font-weight:600;color:var(--text-mid);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.q-label-num{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.q-sublabel{font-size:11px;color:var(--text-light);margin-bottom:5px;margin-top:-2px}
+
+/* rating buttons */
+.rating-row{display:flex;gap:5px}
+.rating-btn{
+  flex:1;padding:8px 4px;font-size:11px;font-weight:600;
+  border-radius:var(--radius-sm);border:1.5px solid var(--gray-border);
+  background:transparent;color:var(--text-light);cursor:pointer;
+  transition:all .15s;font-family:'Inter',sans-serif;text-align:center;
+}
+.rating-btn:hover{background:var(--gray)}
+.rating-btn.sel-1{background:#FCEBEB;border-color:#E24B4A;color:#791F1F}
+.rating-btn.sel-2{background:#FAECE7;border-color:#D85A30;color:#712B13}
+.rating-btn.sel-3{background:var(--gold-light);border-color:var(--gold);color:var(--gold-dark)}
+.rating-btn.sel-4{background:#EAF3DE;border-color:#639922;color:#27500A}
+.rating-btn.sel-5{background:var(--teal-light);border-color:var(--teal);color:var(--teal-dark)}
+
+/* focus area checkboxes */
+.focus-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.focus-item{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 10px;border-radius:var(--radius-sm);
+  border:1.5px solid var(--gray-border);cursor:pointer;
+  transition:all .15s;font-size:12px;color:var(--text-mid);
+}
+.focus-item:hover{background:var(--gray)}
+.focus-item.checked{border-color:var(--teal);background:var(--teal-light);color:var(--teal-dark)}
+.focus-item input{display:none}
+.focus-check{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--gray-border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.focus-item.checked .focus-check{background:var(--teal);border-color:var(--teal)}
+.focus-check svg{width:9px;height:9px;stroke:white;fill:none;display:none}
+.focus-item.checked .focus-check svg{display:block}
+
+/* nav */
+.nav-bar{display:flex;gap:10px;padding:16px 20px 20px;border-top:1px solid var(--gray-border)}
+.btn-back{padding:12px 20px;font-size:13px;font-weight:500;font-family:'Inter',sans-serif;background:transparent;border:1.5px solid var(--gray-border);border-radius:var(--radius-sm);color:var(--text-mid);cursor:pointer;transition:background .15s}
+.btn-back:hover{background:var(--gray)}
+.btn-next{flex:1;padding:12px;font-size:14px;font-weight:600;font-family:'Inter',sans-serif;background:var(--navy);color:white;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:background .2s}
+.btn-next:hover{background:#1a2e44}
+.btn-next:disabled{opacity:.35;cursor:not-allowed}
+
+/* results */
+.results-hero{background:var(--navy);padding:28px 28px 24px}
+.results-tag{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--teal);margin-bottom:8px}
+.results-name{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:white;line-height:1.2;margin-bottom:4px}
+.results-meta{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:16px}
+.readiness-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.readiness-card{background:rgba(255,255,255,.07);border-radius:var(--radius-sm);padding:12px 14px}
+.rc-label{font-size:10px;color:rgba(255,255,255,.45);margin-bottom:4px;font-weight:500;letter-spacing:.04em}
+.rc-value{font-size:20px;font-weight:600;color:white;font-family:'Fraunces',serif;line-height:1}
+.rc-sub{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px}
+.results-body{padding:20px}
+.phase-result{border:1.5px solid var(--gray-border);border-radius:var(--radius);padding:16px;margin-bottom:10px}
+.pr-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.pr-title{font-size:13px;font-weight:600;color:var(--navy)}
+.pr-days{font-size:11px;color:var(--text-light)}
+.pr-goal-section{margin-bottom:8px}
+.pr-goal-label{font-size:10px;font-weight:600;letter-spacing:.05em;color:var(--text-light);margin-bottom:3px}
+.pr-goal-value{font-size:12px;color:var(--text);line-height:1.5;background:var(--gray);border-radius:var(--radius-sm);padding:7px 10px}
+.pr-focus-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.pr-focus-pill{font-size:10px;font-weight:500;padding:3px 8px;border-radius:99px}
+.readiness-bar-wrap{margin-bottom:16px}
+.rb-header{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px}
+.rb-label{font-weight:500;color:var(--text)}
+.rb-score{color:var(--text-light)}
+.rb-track{height:7px;background:var(--gray);border-radius:99px;overflow:hidden}
+.rb-fill{height:100%;border-radius:99px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.insight-box{background:var(--gray);border-radius:var(--radius);padding:14px;margin-bottom:12px}
+.insight-label{font-size:10px;font-weight:600;letter-spacing:.05em;color:var(--text-light);margin-bottom:6px}
+.insight-item{font-size:12px;color:var(--text-mid);padding:4px 0;border-bottom:1px solid var(--gray-border);line-height:1.5;display:flex;gap:6px}
+.insight-item:last-child{border-bottom:none;padding-bottom:0}
+.insight-item::before{content:'→';color:var(--teal);font-weight:600;flex-shrink:0}
+.cta-section{padding:4px 20px 20px}
+.cta-card{background:var(--navy);border-radius:var(--radius);padding:24px;text-align:center}
+.cta-title{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:white;margin-bottom:8px;line-height:1.3}
+.cta-sub{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:20px;line-height:1.6}
+.btn-cta{display:inline-block;padding:13px 28px;background:var(--teal);color:white;font-size:14px;font-weight:600;font-family:'Inter',sans-serif;border:none;border-radius:var(--radius-sm);cursor:pointer;text-decoration:none;transition:background .2s;margin-bottom:8px}
+.btn-cta:hover{background:#009B8E}
+.btn-cta-sec{display:block;font-size:12px;color:rgba(255,255,255,.4);cursor:pointer;background:none;border:none;font-family:'Inter',sans-serif;margin-top:8px}
+.form-note{font-size:11px;color:var(--text-light);text-align:center;padding:0 20px 20px;line-height:1.5}
+.form-note a{color:var(--teal);text-decoration:none}
+.section-divider{font-size:12px;font-weight:600;color:var(--text-light);letter-spacing:.05em;padding:4px 0 10px;border-bottom:1px solid var(--gray-border);margin-bottom:14px}
+
+/* toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:white;font-size:13px;font-weight:500;padding:10px 20px;border-radius:99px;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;z-index:999}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:480px){
+  .page{padding:16px 12px 48px}
+  .field-row,.field-row.three{grid-template-columns:1fr}
+  .intro-title{font-size:24px}
+  .phase-preview{grid-template-columns:1fr}
+  .focus-grid{grid-template-columns:1fr}
+  .readiness-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topbar">
+    <a class="logo" href="#">
+      <div class="logo-dot">
+        <svg viewBox="0 0 14 14"><path d="M7 2a5 5 0 100 10A5 5 0 007 2zm0 2a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0 6.5a3.5 3.5 0 01-2.8-1.4C4.3 8.4 5.6 8 7 8s2.7.4 2.8 1.1A3.5 3.5 0 017 10.5z" fill="white"/></svg>
+      </div>
+      <div>
+        <div class="logo-name">AM Business Coaching</div>
+        <div class="logo-sub">anbarasimarimuthu.com</div>
+      </div>
+    </a>
+    <div class="topbar-right" id="topbar-right"></div>
+  </div>
+
+  <div class="card" id="main-card">
+
+    <!-- SCREEN: INTRO -->
+    <div id="screen-intro">
+      <div class="intro-hero">
+        <div class="hero-tag"><span></span>Free 5-minute exercise</div>
+        <div class="intro-title">Build your <em>90-day</em> business roadmap</div>
+        <div class="intro-desc">Answer a few focused questions about where you are and where you want to go. Get a personalised phase-by-phase plan delivered instantly — and to your inbox.</div>
+        <div class="meta-row">
+          <span class="meta-chip">3 phases</span>
+          <span class="meta-chip">Personalised plan</span>
+          <span class="meta-chip">Instant results</span>
+          <span class="meta-chip">Free strategy session</span>
+        </div>
+        <div class="phase-preview">
+          <div class="phase-chip" style="background:rgba(0,180,166,.1)">
+            <div class="phase-chip-label" style="color:#00B4A6">PHASE 1</div>
+            <div class="phase-chip-title">Clarity & Foundation</div>
+            <div class="phase-chip-days">Days 1–30</div>
+          </div>
+          <div class="phase-chip" style="background:rgba(245,166,35,.1)">
+            <div class="phase-chip-label" style="color:#F5A623">PHASE 2</div>
+            <div class="phase-chip-title">Build & Execute</div>
+            <div class="phase-chip-days">Days 31–60</div>
+          </div>
+          <div class="phase-chip" style="background:rgba(76,175,136,.1)">
+            <div class="phase-chip-label" style="color:#4CAF88">PHASE 3</div>
+            <div class="phase-chip-title">Optimise & Scale</div>
+            <div class="phase-chip-days">Days 61–90</div>
+          </div>
+        </div>
+      </div>
+      <div class="intro-body">
+        <div class="section-divider">Your details</div>
+        <div class="field-row">
+          <div><div class="field-label">First name <span>*</span></div><input type="text" id="f-fname" placeholder="e.g. Sarah" autocomplete="given-name"/></div>
+          <div><div class="field-label">Last name <span>*</span></div><input type="text" id="f-lname" placeholder="e.g. Tan" autocomplete="family-name"/></div>
+        </div>
+        <div class="field-row">
+          <div><div class="field-label">Email address <span>*</span></div><input type="email" id="f-email" placeholder="you@yourbusiness.com" autocomplete="email"/></div>
+          <div><div class="field-label">Phone number <span>*</span></div><input type="tel" id="f-phone" placeholder="e.g. +60 12 345 6789" autocomplete="tel"/></div>
+        </div>
+        <div class="field-row">
+          <div><div class="field-label">Business type <span>*</span></div>
+            <select id="f-btype">
+              <option value="">Select one</option>
+              <option>Retail / trade</option>
+              <option>Service-based business</option>
+              <option>Startup / early stage</option>
+              <option>Coaching / consulting</option>
+              <option>Financial advisory</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div><div class="field-label">Years in business <span>*</span></div>
+            <select id="f-years">
+              <option value="">Select one</option>
+              <option>Less than 1 year</option>
+              <option>1–2 years</option>
+              <option>3–5 years</option>
+              <option>6–10 years</option>
+              <option>10+ years</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row full">
+          <div><div class="field-label">Current biggest challenge</div>
+            <textarea id="f-challenge" placeholder="e.g. I can't seem to find enough time to work on the business rather than in it..."></textarea>
+          </div>
+        </div>
+        <div class="consent-row">
+          <input type="checkbox" id="f-consent"/>
+          <span class="consent-text">I agree to receive my personalised roadmap results and occasional business coaching insights from An Marimuthu. I can unsubscribe anytime. <a href="#">Privacy policy</a>.</span>
+        </div>
+        <button class="btn-start" onclick="startRoadmap()">Build my 90-day roadmap →</button>
+        <div class="trust-row">
+          <div class="trust-item"><svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 1l1.4 3.5H11L8.5 6.8l1 3.5-3-2-3 2 1-3.5L2 4.5h3.1z"/></svg>Free — no credit card</div>
+          <div class="trust-item"><svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="9" height="7" rx="1"/><path d="M4.5 5V3.5a2 2 0 014 0V5"/></svg>Private &amp; confidential</div>
+          <div class="trust-item"><svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6.5" cy="6.5" r="5"/><path d="M6.5 4v3l1.5 1.5"/></svg>Takes ~5 minutes</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN: PHASES -->
+    <div id="screen-phases" class="hidden">
+      <div class="progress-wrap">
+        <div class="progress-meta"><span id="prog-label">Phase 1 of 3</span><strong id="prog-pct">0% complete</strong></div>
+        <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+        <div class="phase-tabs" id="phase-tabs">
+          <div class="phase-tab active" id="tab-0"></div>
+          <div class="phase-tab" id="tab-1"></div>
+          <div class="phase-tab" id="tab-2"></div>
+        </div>
+      </div>
+      <div id="phase-hero-wrap"></div>
+      <div class="phase-body" id="phase-body-wrap"></div>
+      <div class="nav-bar">
+        <button class="btn-back" id="btn-back" onclick="prevPhase()" style="display:none">← Back</button>
+        <button class="btn-next" id="btn-next" onclick="nextPhase()">Next phase →</button>
+      </div>
+    </div>
+
+    <!-- SCREEN: RESULTS -->
+    <div id="screen-results" class="hidden">
+      <div class="results-hero">
+        <div class="results-tag">YOUR 90-DAY ROADMAP</div>
+        <div class="results-name" id="r-name"></div>
+        <div class="results-meta" id="r-meta"></div>
+        <div class="readiness-row">
+          <div class="readiness-card">
+            <div class="rc-label">READINESS SCORE</div>
+            <div class="rc-value"><span id="r-score">0</span><span style="font-size:14px;color:rgba(255,255,255,.4)"> / 15</span></div>
+            <div class="rc-sub" id="r-readiness-label"></div>
+          </div>
+          <div class="readiness-card">
+            <div class="rc-label">STARTING POINT</div>
+            <div class="rc-value" style="font-size:14px;line-height:1.3" id="r-starting"></div>
+            <div class="rc-sub" id="r-years-label"></div>
+          </div>
+        </div>
+      </div>
+      <div class="results-body">
+        <div class="readiness-bar-wrap">
+          <div class="rb-header"><span class="rb-label">Overall readiness to execute this roadmap</span><span class="rb-score" id="r-score-pct"></span></div>
+          <div class="rb-track"><div class="rb-fill" id="r-score-bar" style="width:0%"></div></div>
+        </div>
+        <div class="insight-box" id="r-insights">
+          <div class="insight-label">PERSONALISED INSIGHTS</div>
+          <div id="r-insight-list"></div>
+        </div>
+        <div id="r-phase-results"></div>
+      </div>
+      <div class="cta-section">
+        <div class="cta-card">
+          <div class="cta-title">Ready to execute this roadmap with expert support?</div>
+          <div class="cta-sub">Book a free 20-minute Strategy Session with An. We'll review your roadmap together and map out your personalised first 30 days — no pitch, just clarity.</div>
+          <a class="btn-cta" href="https://calendar.app.google/CjAfL59peaLaJMdK9" target="_blank">Book my free session →</a>
+          <div><button class="btn-cta-sec" onclick="shareResult()">Share my roadmap</button></div>
+        </div>
+      </div>
+      <div class="form-note">Results sent to <strong id="r-email-out"></strong> and <strong id="r-phone-out"></strong>.<br/>Not there? Check spam or <a href="#">contact An directly</a>.</div>
+    </div>
+
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const PHASES = [
+  {
+    id:'p1',
+    label:'Phase 1',
+    days:'Days 1–30',
+    theme:'Clarity & Foundation',
+    color:'#00B4A6',
+    bg:'#E0F5F4',
+    textColor:'#085041',
+    tagline:'Know exactly where you are and where you\'re going.',
+    questions:[
+      {
+        id:'p1_revenue_goal',
+        label:'Revenue goal for Day 30',
+        sublabel:'What specific revenue do you want to hit by the end of Month 1?',
+        type:'text',
+        placeholder:'e.g. RM 15,000 in new client revenue',
+      },
+      {
+        id:'p1_constraint',
+        label:'Your #1 bottleneck right now',
+        sublabel:'What is the single biggest thing holding your business back?',
+        type:'text',
+        placeholder:'e.g. No system for consistent lead generation',
+      },
+      {
+        id:'p1_focus',
+        label:'Phase 1 focus areas',
+        sublabel:'Select all that apply to your first 30 days.',
+        type:'focus',
+        options:['Run full business audit','Define ideal client profile','Fix #1 broken process','Document top 3 SOPs','Clarify positioning statement','Set up lead magnet','Build weekly review habit','Map out cash flow'],
+      },
+      {
+        id:'p1_readiness',
+        label:'How clear are you on your current situation?',
+        sublabel:'1 = completely lost, 5 = crystal clear',
+        type:'rating',
+      },
+      {
+        id:'p1_commitment',
+        label:'Hours per week you can dedicate to working ON the business',
+        sublabel:'Be honest — this shapes your realistic roadmap.',
+        type:'select',
+        options:['Less than 2 hours','2–4 hours','4–6 hours','6–10 hours','10+ hours'],
+      },
+    ]
+  },
+  {
+    id:'p2',
+    label:'Phase 2',
+    days:'Days 31–60',
+    theme:'Build & Execute',
+    color:'#F5A623',
+    bg:'#FEF6E4',
+    textColor:'#633806',
+    tagline:'Stop reacting. Start building the machine.',
+    questions:[
+      {
+        id:'p2_revenue_goal',
+        label:'Revenue goal for Day 60',
+        sublabel:'What specific revenue do you want to hit by the end of Month 2?',
+        type:'text',
+        placeholder:'e.g. RM 25,000 cumulative revenue',
+      },
+      {
+        id:'p2_system',
+        label:'The one system you will fully build or fix',
+        sublabel:'What process or system will you delegate or automate in Phase 2?',
+        type:'text',
+        placeholder:'e.g. Client onboarding — fully documented and handed to team',
+      },
+      {
+        id:'p2_focus',
+        label:'Phase 2 focus areas',
+        sublabel:'Select what you plan to execute in Month 2.',
+        type:'focus',
+        options:['Launch lead magnet','Post content 3x/week','Build sales follow-up system','Template proposal & pitch','Delegate 1 recurring task','Implement ManyChat funnel','Run first discovery calls','Review & adjust strategy'],
+      },
+      {
+        id:'p2_readiness',
+        label:'How confident are you in executing your sales process?',
+        sublabel:'1 = no system at all, 5 = fully documented and working',
+        type:'rating',
+      },
+      {
+        id:'p2_team',
+        label:'Team or support available in Phase 2',
+        sublabel:'Who will help you execute during this phase?',
+        type:'select',
+        options:['Just me — solo founder','1 part-time contractor','1–2 full-time team members','3–5 team members','6+ team members'],
+      },
+    ]
+  },
+  {
+    id:'p3',
+    label:'Phase 3',
+    days:'Days 61–90',
+    theme:'Optimise & Scale',
+    color:'#4CAF88',
+    bg:'#EAF6F1',
+    textColor:'#085041',
+    tagline:'Double down on what\'s working. Cut what isn\'t.',
+    questions:[
+      {
+        id:'p3_revenue_goal',
+        label:'Revenue goal for Day 90',
+        sublabel:'What is your 90-day revenue target?',
+        type:'text',
+        placeholder:'e.g. RM 40,000 total revenue by Day 90',
+      },
+      {
+        id:'p3_scale',
+        label:'What will you add, launch, or expand in Phase 3?',
+        sublabel:'New offer, new channel, new team role, or market expansion?',
+        type:'text',
+        placeholder:'e.g. Launch group coaching programme for 6 founders',
+      },
+      {
+        id:'p3_focus',
+        label:'Phase 3 focus areas',
+        sublabel:'Select what you plan to optimise or launch in Month 3.',
+        type:'focus',
+        options:['Raise prices or launch new offer','Build next 30-day content calendar','Expand to new market or platform','Hire or onboard new team member','Automate top revenue activity','Run 90-day debrief & review','Set next 90-day targets','Explore Singapore market'],
+      },
+      {
+        id:'p3_readiness',
+        label:'How ready is your business to handle more clients right now?',
+        sublabel:'1 = not ready at all, 5 = fully systemised and ready to scale',
+        type:'rating',
+      },
+      {
+        id:'p3_vision',
+        label:'Where do you want your business to be in 12 months?',
+        sublabel:'One clear sentence is enough.',
+        type:'text',
+        placeholder:'e.g. A fully systemised coaching business generating RM 30k/month with a team of 3',
+      },
+    ]
+  }
+];
+
+let currentPhase = 0;
+let answers = {};
+let lead = {};
+
+function startRoadmap() {
+  const fname = document.getElementById('f-fname').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const btype = document.getElementById('f-btype').value;
+  const years = document.getElementById('f-years').value;
+  const consent = document.getElementById('f-consent').checked;
+  if (!fname || !email || !phone || !btype || !years || !consent) {
+    showToast('Please fill in all required fields and check the consent box.');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showToast('Please enter a valid email address.');
+    return;
+  }
+  lead = {fname, lname: document.getElementById('f-lname').value.trim(), email, phone, btype, years, challenge: document.getElementById('f-challenge').value.trim()};
+  document.getElementById('screen-intro').classList.add('hidden');
+  document.getElementById('screen-phases').classList.remove('hidden');
+  renderPhase(0);
+}
+
+function renderPhase(idx) {
+  currentPhase = idx;
+  const phase = PHASES[idx];
+  const pct = Math.round(idx / PHASES.length * 100);
+  document.getElementById('prog-label').textContent = `${phase.label} of 3: ${phase.theme}`;
+  document.getElementById('prog-pct').textContent = `${pct}% complete`;
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('topbar-right').textContent = `Phase ${idx+1} of 3`;
+  [0,1,2].forEach(i => {
+    const t = document.getElementById('tab-'+i);
+    t.className = 'phase-tab' + (i < idx ? ' done' : i === idx ? ' active' : '');
+  });
+  document.getElementById('btn-back').style.display = idx === 0 ? 'none' : '';
+  document.getElementById('btn-next').textContent = idx === PHASES.length - 1 ? 'See my roadmap →' : 'Next phase →';
+
+  document.getElementById('phase-hero-wrap').innerHTML = `
+    <div class="phase-hero">
+      <div class="phase-badge" style="background:${phase.bg};color:${phase.textColor}">${phase.label}: ${phase.days}</div>
+      <div class="phase-title" style="color:${phase.color}">${phase.theme}</div>
+      <div class="phase-desc">${phase.tagline}</div>
+    </div>`;
+
+  let html = '';
+  phase.questions.forEach((q, qi) => {
+    html += `<div class="q-block">`;
+    html += `<div class="q-label"><div class="q-label-num" style="background:${phase.bg};color:${phase.textColor}">${qi+1}</div>${q.label}</div>`;
+    if (q.sublabel) html += `<div class="q-sublabel">${q.sublabel}</div>`;
+    const cur = answers[q.id];
+    if (q.type === 'text') {
+      html += `<input type="text" id="${q.id}" placeholder="${q.placeholder||''}" value="${cur||''}" oninput="save('${q.id}',this.value)" style="width:100%"/>`;
+    } else if (q.type === 'select') {
+      html += `<select id="${q.id}" onchange="save('${q.id}',this.value)"><option value="">Select one</option>${q.options.map(o=>`<option${cur===o?' selected':''}>${o}</option>`).join('')}</select>`;
+    } else if (q.type === 'rating') {
+      html += `<div class="rating-row">${[1,2,3,4,5].map(n=>`<button class="rating-btn${cur==n?' sel-'+n:''}" onclick="saveRating('${q.id}',${n},this)">${n}</button>`).join('')}</div>`;
+      html += `<div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-light);margin-top:3px"><span>Not at all</span><span>Completely</span></div>`;
+    } else if (q.type === 'focus') {
+      const curArr = cur ? JSON.parse(cur) : [];
+      html += `<div class="focus-grid">${q.options.map(o => {
+        const checked = curArr.includes(o);
+        return `<label class="focus-item${checked?' checked':''}" onclick="toggleFocus('${q.id}','${o}',this)">
+          <div class="focus-check"><svg viewBox="0 0 9 9" stroke-width="1.5" stroke-linecap="round"><path d="M1.5 4.5l2 2 4-4"/></svg></div>
+          <span>${o}</span>
+        </label>`;
+      }).join('')}</div>`;
+    }
+    html += `</div>`;
+  });
+  document.getElementById('phase-body-wrap').innerHTML = html;
+  updateNextBtn();
+  document.getElementById('main-card').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function save(id, val) { answers[id] = val; updateNextBtn(); }
+
+function saveRating(id, val, btn) {
+  answers[id] = val;
+  btn.closest('.rating-row').querySelectorAll('.rating-btn').forEach(b => b.className = 'rating-btn');
+  btn.classList.add('sel-' + val);
+  updateNextBtn();
+}
+
+function toggleFocus(id, val, label) {
+  const cur = answers[id] ? JSON.parse(answers[id]) : [];
+  const idx = cur.indexOf(val);
+  if (idx > -1) { cur.splice(idx,1); label.classList.remove('checked'); }
+  else { cur.push(val); label.classList.add('checked'); }
+  label.querySelector('.focus-check svg').style.display = label.classList.contains('checked') ? 'block' : 'none';
+  answers[id] = JSON.stringify(cur);
+}
+
+function updateNextBtn() {
+  const phase = PHASES[currentPhase];
+  const required = phase.questions.filter(q => q.type !== 'focus');
+  const allDone = required.every(q => answers[q.id] && answers[q.id] !== '');
+  document.getElementById('btn-next').disabled = !allDone;
+}
+
+function nextPhase() {
+  if (currentPhase < PHASES.length - 1) renderPhase(currentPhase + 1);
+  else showResults();
+}
+function prevPhase() { if (currentPhase > 0) renderPhase(currentPhase - 1); }
+
+function showResults() {
+  document.getElementById('screen-phases').classList.add('hidden');
+  document.getElementById('screen-results').classList.remove('hidden');
+  document.getElementById('topbar-right').textContent = 'Complete';
+  document.getElementById('main-card').scrollIntoView({behavior:'smooth',block:'start'});
+
+  document.getElementById('r-name').textContent = `${lead.fname}'s 90-Day Roadmap`;
+  document.getElementById('r-meta').textContent = `${lead.btype} · ${lead.years} · ${new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}`;
+  document.getElementById('r-email-out').textContent = lead.email;
+  document.getElementById('r-phone-out').textContent = lead.phone;
+  document.getElementById('r-starting').textContent = lead.btype;
+  document.getElementById('r-years-label').textContent = lead.years + ' in business';
+
+  const r1 = parseInt(answers['p1_readiness'])||0;
+  const r2 = parseInt(answers['p2_readiness'])||0;
+  const r3 = parseInt(answers['p3_readiness'])||0;
+  const totalScore = r1 + r2 + r3;
+  const pct = Math.round(totalScore / 15 * 100);
+  document.getElementById('r-score').textContent = totalScore;
+  document.getElementById('r-score-pct').textContent = pct + '%';
+
+  let readLabel, barColor;
+  if (pct >= 80) { readLabel = 'Scale-ready'; barColor = '#4CAF88'; }
+  else if (pct >= 60) { readLabel = 'Execution-ready'; barColor = '#00B4A6'; }
+  else if (pct >= 40) { readLabel = 'Building phase'; barColor = '#F5A623'; }
+  else { readLabel = 'Foundation needed'; barColor = '#E8534A'; }
+  document.getElementById('r-readiness-label').textContent = readLabel;
+  document.getElementById('r-score-bar').style.width = pct + '%';
+  document.getElementById('r-score-bar').style.background = barColor;
+
+  const insights = [];
+  if (r1 <= 2) insights.push('Start with a full Business Audit before doing anything else — clarity in Phase 1 is non-negotiable.');
+  if (r2 <= 2) insights.push('Your sales process needs documenting before Phase 2. Without a repeatable system, growth stalls.');
+  if (r3 <= 2) insights.push('Phase 3 scaling requires Phase 1 and 2 foundations to be solid first. Don\'t rush to scale.');
+  if (lead.challenge) insights.push(`Your stated challenge — "${lead.challenge.substring(0,80)}${lead.challenge.length>80?'...':''}" — will be the first thing we address together.`);
+  const hoursVal = answers['p1_commitment'];
+  if (hoursVal === 'Less than 2 hours') insights.push('With under 2 hours/week on the business, focus on one high-leverage action per week — not a full strategy overhaul.');
+  if (totalScore >= 12) insights.push('Your readiness scores are strong. You\'re likely ready to move fast — the key is staying consistent across all 3 phases.');
+  if (insights.length === 0) insights.push('You have a solid foundation. Focus on executing one phase at a time without skipping ahead.');
+
+  document.getElementById('r-insight-list').innerHTML = insights.map(i => `<div class="insight-item">${i}</div>`).join('');
+
+  let phaseHtml = '';
+  PHASES.forEach(phase => {
+    const goal = answers[`${phase.id}_revenue_goal`] || '—';
+    const system = answers[`${phase.id}_system`] || answers[`${phase.id}_scale`] || answers[`${phase.id}_constraint`] || '—';
+    const focusArr = answers[`${phase.id}_focus`] ? JSON.parse(answers[`${phase.id}_focus`]) : [];
+    const rating = answers[`${phase.id}_readiness`] || '—';
+    phaseHtml += `
+      <div class="phase-result">
+        <div class="pr-header">
+          <div class="pr-title" style="color:${phase.color}">${phase.label}: ${phase.theme}</div>
+          <div class="pr-days">${phase.days}</div>
+        </div>
+        <div class="pr-goal-section">
+          <div class="pr-goal-label">REVENUE TARGET</div>
+          <div class="pr-goal-value">${goal}</div>
+        </div>
+        <div class="pr-goal-section">
+          <div class="pr-goal-label">KEY PRIORITY</div>
+          <div class="pr-goal-value">${system}</div>
+        </div>
+        ${focusArr.length > 0 ? `<div class="pr-goal-label" style="margin-top:8px">FOCUS AREAS</div><div class="pr-focus-row">${focusArr.map(f=>`<span class="pr-focus-pill" style="background:${phase.bg};color:${phase.textColor}">${f}</span>`).join('')}</div>` : ''}
+        <div style="font-size:11px;color:var(--text-light);margin-top:8px">Readiness score: <strong style="color:${phase.color}">${rating} / 5</strong></div>
+      </div>`;
+  });
+  document.getElementById('r-phase-results').innerHTML = phaseHtml;
+
+  submitToFormspree(totalScore);
+}
+
+function submitToFormspree(score) {
+  const FORM_ID = 'xaqgwblk';
+  const phaseGoals = PHASES.map(p => `${p.label} (${p.days}): Revenue target = ${answers[p.id+'_revenue_goal']||'—'}, Readiness = ${answers[p.id+'_readiness']||'—'}/5`).join(' | ');
+  fetch(`https://formspree.io/f/${FORM_ID}`, {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({
+      first_name: lead.fname,
+      last_name: lead.lname,
+      email: lead.email,
+      phone: lead.phone,
+      business_type: lead.btype,
+      years_in_business: lead.years,
+      biggest_challenge: lead.challenge,
+      readiness_score: `${score}/15`,
+      phase_goals: phaseGoals,
+      p1_focus: answers['p1_focus'] ? JSON.parse(answers['p1_focus']).join(', ') : '',
+      p2_focus: answers['p2_focus'] ? JSON.parse(answers['p2_focus']).join(', ') : '',
+      p3_focus: answers['p3_focus'] ? JSON.parse(answers['p3_focus']).join(', ') : '',
+      p1_commitment: answers['p1_commitment']||'',
+      p2_team: answers['p2_team']||'',
+      p3_vision: answers['p3_vision']||'',
+      _subject: `90-Day Roadmap — ${lead.fname} ${lead.lname} (Readiness: ${score}/15)`,
+      _replyto: lead.email,
+    })
+  }).catch(()=>{});
+}
+
+function shareResult() {
+  const score = document.getElementById('r-score').textContent;
+  const text = `I just built my 90-Day Business Roadmap with @anbarasimarimuthu and scored ${score}/15 on readiness. Build yours free → [YOUR URL]`;
+  if (navigator.share) navigator.share({title:'My 90-Day Business Roadmap',text}).catch(()=>{});
+  else if (navigator.clipboard) navigator.clipboard.writeText(text).then(()=>showToast('Share text copied!'));
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+</script>
+</body>
+</html>
