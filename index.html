@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Business Audit — AM Business Coaching</title>
+<meta name="description" content="50 questions across 5 business areas. Find your bottlenecks. Get your personalised score and priority action list — free."/>
+<meta property="og:title" content="Free Business Audit — AM Business Coaching"/>
+<meta property="og:description" content="50 questions. 5 minutes. Find every bottleneck in your business."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#0D1B2A;
+  --teal:#00B4A6;
+  --teal-light:#E0F5F4;
+  --teal-dark:#085041;
+  --gold:#F5A623;
+  --gold-light:#FEF6E4;
+  --coral:#E8534A;
+  --coral-light:#FEF0EF;
+  --purple:#6C4EBD;
+  --purple-light:#EEEDFE;
+  --sage:#4CAF88;
+  --sage-light:#EAF6F1;
+  --gray:#F4F7F6;
+  --gray-mid:#8A9BAD;
+  --gray-border:#DDE3E8;
+  --text:#0D1B2A;
+  --text-mid:#4A5568;
+  --text-light:#8A9BAD;
+  --white:#FFFFFF;
+  --radius:10px;
+  --radius-sm:6px;
+  --shadow:0 1px 3px rgba(13,27,42,.08), 0 0 0 1px rgba(13,27,42,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter',sans-serif;
+  background:#F0F4F3;
+  color:var(--text);
+  min-height:100vh;
+  line-height:1.6;
+}
+.page{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:24px 16px 60px;
+}
+.card{
+  background:var(--white);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  width:100%;
+  max-width:600px;
+  overflow:hidden;
+}
+
+/* ── NAV BAR ── */
+.topbar{
+  width:100%;
+  max-width:600px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+}
+.logo-dot{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--teal);
+  display:flex;align-items:center;justify-content:center;
+}
+.logo-dot svg{width:14px;height:14px;fill:white}
+.logo-name{font-size:13px;font-weight:600;color:var(--navy);letter-spacing:-.01em}
+.logo-sub{font-size:11px;color:var(--text-light)}
+.topbar-right{font-size:12px;color:var(--text-light)}
+
+/* ── PROGRESS ── */
+.progress-wrap{padding:20px 24px 0}
+.progress-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--text-light);margin-bottom:8px}
+.progress-meta strong{color:var(--text-mid)}
+.progress-track{height:5px;background:var(--gray);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;border-radius:99px;background:var(--teal);transition:width .4s cubic-bezier(.4,0,.2,1)}
+.section-tabs{display:flex;gap:4px;padding:12px 24px 0;overflow-x:auto}
+.section-tab{
+  flex-shrink:0;height:4px;border-radius:99px;
+  background:var(--gray);transition:background .3s;
+}
+.section-tab.done{background:var(--teal)}
+.section-tab.active{background:var(--navy)}
+
+/* ── INTRO SCREEN ── */
+.intro-hero{
+  background:var(--navy);
+  padding:36px 28px 28px;
+  position:relative;
+  overflow:hidden;
+}
+.intro-hero::after{
+  content:'';
+  position:absolute;
+  right:-40px;top:-40px;
+  width:180px;height:180px;
+  border-radius:50%;
+  background:rgba(0,180,166,.12);
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:500;letter-spacing:.06em;
+  color:var(--teal);
+  background:rgba(0,180,166,.12);
+  padding:4px 10px;border-radius:99px;
+  margin-bottom:16px;
+}
+.hero-tag span{width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block}
+.intro-title{
+  font-family:'Fraunces',serif;
+  font-size:28px;font-weight:600;
+  color:white;
+  line-height:1.2;
+  margin-bottom:12px;
+  position:relative;z-index:1;
+}
+.intro-title em{color:var(--teal);font-style:normal}
+.intro-desc{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:20px}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px}
+.meta-chip{
+  font-size:11px;font-weight:500;
+  padding:4px 10px;border-radius:99px;
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.7);
+}
+.intro-body{padding:24px 28px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.field-row.full{grid-template-columns:1fr}
+.field-label{font-size:12px;font-weight:500;color:var(--text-mid);margin-bottom:5px}
+.field-label span{color:var(--coral);margin-left:2px}
+input[type=text],input[type=email],select{
+  width:100%;
+  padding:10px 12px;
+  font-size:13px;
+  font-family:'Inter',sans-serif;
+  color:var(--text);
+  background:var(--gray);
+  border:1.5px solid transparent;
+  border-radius:var(--radius-sm);
+  outline:none;
+  transition:border-color .2s,background .2s;
+  appearance:none;-webkit-appearance:none;
+}
+input[type=text]:focus,input[type=email]:focus,select:focus{
+  background:white;
+  border-color:var(--teal);
+}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A9BAD' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+.consent-row{display:flex;align-items:flex-start;gap:10px;padding:12px;background:var(--gray);border-radius:var(--radius-sm);margin:16px 0}
+.consent-row input[type=checkbox]{width:16px;height:16px;margin-top:1px;accent-color:var(--teal);flex-shrink:0;cursor:pointer}
+.consent-text{font-size:12px;color:var(--text-mid);line-height:1.5}
+.consent-text a{color:var(--teal);text-decoration:none}
+.btn-start{
+  width:100%;padding:14px;
+  font-size:15px;font-weight:600;font-family:'Inter',sans-serif;
+  background:var(--navy);color:white;
+  border:none;border-radius:var(--radius-sm);
+  cursor:pointer;
+  transition:background .2s,transform .1s;
+  letter-spacing:-.01em;
+}
+.btn-start:hover{background:#1a2e44}
+.btn-start:active{transform:scale(.99)}
+.btn-start:disabled{opacity:.4;cursor:not-allowed}
+.trust-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:14px}
+.trust-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-light)}
+.trust-item svg{width:13px;height:13px}
+
+/* ── SECTION HEADER ── */
+.section-hero{
+  padding:20px 24px 16px;
+  border-bottom:1px solid var(--gray-border);
+}
+.section-label{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:600;letter-spacing:.06em;
+  padding:3px 10px;border-radius:99px;
+  margin-bottom:10px;
+}
+.section-title{font-size:17px;font-weight:600;color:var(--navy);margin-bottom:3px}
+.section-desc{font-size:12px;color:var(--text-light);line-height:1.5}
+
+/* ── QUESTIONS ── */
+.questions{padding:16px 20px}
+.q-item{
+  border:1.5px solid var(--gray-border);
+  border-radius:var(--radius);
+  padding:14px 14px 12px;
+  margin-bottom:10px;
+  transition:border-color .2s;
+}
+.q-item.answered{border-color:var(--gray-border)}
+.q-num{font-size:10px;font-weight:600;letter-spacing:.05em;color:var(--text-light);margin-bottom:5px}
+.q-text{font-size:13px;color:var(--text);line-height:1.5;margin-bottom:10px}
+.q-options{display:flex;gap:6px}
+.q-opt{
+  flex:1;padding:7px 6px;
+  font-size:11px;font-weight:600;
+  border-radius:var(--radius-sm);
+  border:1.5px solid var(--gray-border);
+  background:transparent;
+  color:var(--text-light);
+  cursor:pointer;
+  transition:all .15s;
+  font-family:'Inter',sans-serif;
+  letter-spacing:.02em;
+}
+.q-opt:hover{background:var(--gray)}
+.q-opt.yes{background:var(--teal-light);border-color:var(--teal);color:var(--teal-dark)}
+.q-opt.partial{background:var(--gold-light);border-color:var(--gold);color:#633806}
+.q-opt.no{background:var(--coral-light);border-color:var(--coral);color:#7a1f1a}
+
+/* ── NAV BUTTONS ── */
+.nav-bar{
+  display:flex;gap:10px;
+  padding:16px 20px 20px;
+  border-top:1px solid var(--gray-border);
+}
+.btn-back{
+  padding:12px 20px;
+  font-size:13px;font-weight:500;font-family:'Inter',sans-serif;
+  background:transparent;
+  border:1.5px solid var(--gray-border);
+  border-radius:var(--radius-sm);
+  color:var(--text-mid);
+  cursor:pointer;
+  transition:background .15s;
+}
+.btn-back:hover{background:var(--gray)}
+.btn-next{
+  flex:1;padding:12px;
+  font-size:14px;font-weight:600;font-family:'Inter',sans-serif;
+  background:var(--navy);color:white;
+  border:none;border-radius:var(--radius-sm);
+  cursor:pointer;
+  transition:background .2s;
+}
+.btn-next:hover{background:#1a2e44}
+.btn-next:disabled{opacity:.35;cursor:not-allowed}
+
+/* ── RESULTS ── */
+.results-hero{
+  background:var(--navy);
+  padding:28px 28px 24px;
+}
+.results-tag{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--teal);margin-bottom:8px}
+.results-name{
+  font-family:'Fraunces',serif;
+  font-size:22px;font-weight:600;color:white;
+  line-height:1.2;margin-bottom:6px;
+}
+.results-meta{font-size:12px;color:rgba(255,255,255,.5)}
+.total-row{
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,.06);
+  border-radius:var(--radius-sm);
+  padding:14px 16px;
+  margin-top:16px;
+}
+.total-left label{font-size:11px;color:rgba(255,255,255,.5);display:block;margin-bottom:2px}
+.total-score{font-size:32px;font-weight:600;color:white;font-family:'Fraunces',serif;line-height:1}
+.total-denom{font-size:14px;color:rgba(255,255,255,.4)}
+.total-right{text-align:right}
+.total-right label{font-size:11px;color:rgba(255,255,255,.5);display:block;margin-bottom:4px}
+.health-badge{
+  font-size:13px;font-weight:600;
+  padding:5px 14px;border-radius:99px;
+}
+.scores-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:8px;padding:20px 20px 0;
+}
+.score-card{
+  background:var(--gray);
+  border-radius:var(--radius-sm);
+  padding:10px 8px;
+  text-align:center;
+}
+.sc-cat{font-size:9px;font-weight:600;letter-spacing:.04em;color:var(--text-light);margin-bottom:4px;line-height:1.3}
+.sc-num{font-size:22px;font-weight:600;line-height:1}
+.sc-denom{font-size:10px;color:var(--text-light)}
+.results-sections{padding:16px 20px}
+.rs-item{
+  border:1.5px solid var(--gray-border);
+  border-radius:var(--radius);
+  padding:14px;
+  margin-bottom:10px;
+}
+.rs-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.rs-title{font-size:13px;font-weight:600;color:var(--navy)}
+.rs-pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px}
+.rs-bar-track{height:6px;background:var(--gray);border-radius:99px;overflow:hidden;margin-bottom:6px}
+.rs-bar-fill{height:100%;border-radius:99px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.rs-verdict{font-size:11px;color:var(--text-mid);line-height:1.5}
+.bottleneck-box{
+  margin:4px 20px 0;
+  border:1.5px solid #F5C4B3;
+  border-radius:var(--radius);
+  padding:14px;
+  background:#FFF7F5;
+}
+.bb-title{font-size:12px;font-weight:600;color:#712B13;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.bb-title svg{width:14px;height:14px;stroke:#712B13;fill:none;flex-shrink:0}
+.bb-item{
+  font-size:12px;color:#993C1D;
+  padding:6px 0;
+  border-bottom:1px solid #F5C4B3;
+  line-height:1.4;
+  display:flex;gap:8px;
+}
+.bb-item:last-child{border-bottom:none;padding-bottom:0}
+.bb-item::before{content:'→';color:#F5A623;font-weight:600;flex-shrink:0}
+.bb-section{font-weight:600;color:#712B13}
+.cta-section{padding:20px;margin-top:4px}
+.cta-card{
+  background:var(--navy);
+  border-radius:var(--radius);
+  padding:24px;
+  text-align:center;
+}
+.cta-card-title{
+  font-family:'Fraunces',serif;
+  font-size:18px;font-weight:600;color:white;
+  margin-bottom:8px;line-height:1.3;
+}
+.cta-card-sub{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:20px;line-height:1.6}
+.btn-cta{
+  display:inline-block;
+  padding:13px 28px;
+  background:var(--teal);color:white;
+  font-size:14px;font-weight:600;font-family:'Inter',sans-serif;
+  border:none;border-radius:var(--radius-sm);
+  cursor:pointer;
+  text-decoration:none;
+  transition:background .2s;
+  margin-bottom:10px;
+}
+.btn-cta:hover{background:#009B8E}
+.btn-cta-sec{
+  display:block;
+  font-size:12px;color:rgba(255,255,255,.4);
+  text-decoration:none;
+  cursor:pointer;
+  background:none;border:none;font-family:'Inter',sans-serif;
+  margin-top:8px;
+}
+.formspree-note{
+  font-size:11px;color:var(--text-light);
+  text-align:center;padding:0 20px 20px;
+  line-height:1.5;
+}
+.formspree-note a{color:var(--teal);text-decoration:none}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--navy);color:white;
+  font-size:13px;font-weight:500;
+  padding:10px 20px;border-radius:99px;
+  opacity:0;transition:all .3s;pointer-events:none;
+  white-space:nowrap;z-index:999;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── MOBILE ── */
+@media(max-width:480px){
+  .page{padding:16px 12px 48px}
+  .field-row{grid-template-columns:1fr}
+  .scores-grid{grid-template-columns:repeat(3,1fr)}
+  .intro-title{font-size:24px}
+  .meta-row{gap:6px}
+  .meta-chip{font-size:10px}
+}
+
+/* ── UTIL ── */
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="topbar">
+    <a class="logo" href="#">
+      <div class="logo-dot">
+        <svg viewBox="0 0 14 14"><path d="M7 2a5 5 0 100 10A5 5 0 007 2zm0 2a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0 6.5a3.5 3.5 0 01-2.8-1.4C4.3 8.4 5.6 8 7 8s2.7.4 2.8 1.1A3.5 3.5 0 017 10.5z" fill="white"/></svg>
+      </div>
+      <div>
+        <div class="logo-name">AM Business Coaching</div>
+        <div class="logo-sub">anbarasimarimuthu.com</div>
+      </div>
+    </a>
+    <div class="topbar-right" id="progress-label-top"></div>
+  </div>
+
+  <div class="card" id="main-card">
+
+    <!-- INTRO -->
+    <div id="screen-intro">
+      <div class="intro-hero">
+        <div class="hero-tag"><span></span>Free assessment</div>
+        <div class="intro-title">Find every <em>bottleneck</em> in your business</div>
+        <div class="intro-desc">50 honest questions across 5 business areas. Get your personalised score, priority fix list, and a free strategy session — all in under 5 minutes.</div>
+        <div class="meta-row">
+          <span class="meta-chip">5 sections</span>
+          <span class="meta-chip">50 questions</span>
+          <span class="meta-chip">Instant results</span>
+          <span class="meta-chip">Free report to inbox</span>
+        </div>
+      </div>
+      <div class="intro-body">
+        <div class="field-row">
+          <div>
+            <div class="field-label">First name <span>*</span></div>
+            <input type="text" id="f-fname" placeholder="e.g. Sarah" autocomplete="given-name"/>
+          </div>
+          <div>
+            <div class="field-label">Last name <span>*</span></div>
+            <input type="text" id="f-lname" placeholder="e.g. Tan" autocomplete="family-name"/>
+          </div>
+        </div>
+        <div class="field-row full">
+          <div>
+            <div class="field-label">Email address <span>*</span></div>
+            <input type="email" id="f-email" placeholder="you@yourbusiness.com" autocomplete="email"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div>
+            <div class="field-label">Business type <span>*</span></div>
+            <select id="f-btype">
+              <option value="">Select one</option>
+              <option>Retail / trade</option>
+              <option>Service-based business</option>
+              <option>Startup / early stage</option>
+              <option>Coaching / consulting</option>
+              <option>Financial advisory</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <div class="field-label">Years in business <span>*</span></div>
+            <select id="f-years">
+              <option value="">Select one</option>
+              <option>Less than 1 year</option>
+              <option>1–2 years</option>
+              <option>3–5 years</option>
+              <option>6–10 years</option>
+              <option>10+ years</option>
+            </select>
+          </div>
+        </div>
+        <div class="consent-row">
+          <input type="checkbox" id="f-consent"/>
+          <span class="consent-text">I agree to receive my personalised audit results and occasional business coaching insights from An Marimuthu. I can unsubscribe at any time. <a href="#">Privacy policy</a>.</span>
+        </div>
+        <button class="btn-start" id="btn-start" onclick="startAudit()">Start my business audit →</button>
+        <div class="trust-row">
+          <div class="trust-item">
+            <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 1l1.4 3.5H11L8.5 6.8l1 3.5-3-2-3 2 1-3.5L2 4.5h3.1z"/></svg>
+            Free — no credit card
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="9" height="7" rx="1"/><path d="M4.5 5V3.5a2 2 0 014 0V5"/></svg>
+            Private &amp; confidential
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6.5" cy="6.5" r="5"/><path d="M6.5 4v3l1.5 1.5"/></svg>
+            Takes ~5 minutes
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUDIT -->
+    <div id="screen-audit" class="hidden">
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span id="prog-section">Section 1 of 5</span>
+          <strong id="prog-pct">0% complete</strong>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+        <div class="section-tabs" id="section-tabs"></div>
+      </div>
+      <div class="section-hero" id="section-hero"></div>
+      <div class="questions" id="questions-wrap"></div>
+      <div class="nav-bar">
+        <button class="btn-back" id="btn-back" onclick="prevSection()">← Back</button>
+        <button class="btn-next" id="btn-next" onclick="nextSection()" disabled>Next section →</button>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div id="screen-results" class="hidden">
+      <div class="results-hero">
+        <div class="results-tag">YOUR AUDIT RESULTS</div>
+        <div class="results-name" id="r-name">Your Business Audit</div>
+        <div class="results-meta" id="r-meta"></div>
+        <div class="total-row">
+          <div class="total-left">
+            <label>Overall score</label>
+            <div>
+              <span class="total-score" id="r-total">0</span>
+              <span class="total-denom"> / 50</span>
+            </div>
+          </div>
+          <div class="total-right">
+            <label>Business health</label>
+            <div class="health-badge" id="r-health"></div>
+          </div>
+        </div>
+      </div>
+      <div class="scores-grid" id="scores-grid"></div>
+      <div class="results-sections" id="results-sections"></div>
+      <div class="bottleneck-box" id="bottleneck-box">
+        <div class="bb-title">
+          <svg viewBox="0 0 14 14" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M7 4.5v3M7 9.5v.5"/></svg>
+          Priority bottlenecks — fix these first
+        </div>
+        <div id="bottleneck-list"></div>
+      </div>
+      <div class="cta-section">
+        <div class="cta-card">
+          <div class="cta-card-title">Ready to fix your bottlenecks faster?</div>
+          <div class="cta-card-sub">Book a free 20-minute Business Bottleneck Breakdown with An. We'll review your lowest-scoring areas and map out exactly what to fix first — no pitch, just clarity.</div>
+          <a class="btn-cta" href="https://calendar.app.google/CjAfL59peaLaJMdK9" target="_blank">Book my free session →</a>
+          <div>
+            <button class="btn-cta-sec" onclick="shareResult()">Share my results</button>
+          </div>
+        </div>
+      </div>
+      <div class="formspree-note">
+        Results have been sent to <strong id="r-email-confirm"></strong>.<br/>
+        Not there? Check your spam folder or <a href="#">contact An directly</a>.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SECTIONS = [
+  {
+    id:'ops',
+    label:'Operations & Systems',
+    color:'#00B4A6',
+    bg:'#E0F5F4',
+    textColor:'#085041',
+    desc:'Uncover where your business breaks down without you.',
+    questions:[
+      'Do you have written SOPs for your top 5 most repeated tasks?',
+      'Can a new team member complete your core processes without asking you questions?',
+      'Do you have a central place (e.g. Notion, Google Drive) where all processes live?',
+      'Are your SOPs reviewed and updated at least once a quarter?',
+      'Do you know exactly how long each key process takes from start to finish?',
+      'Are there tasks you do every week that could be automated or delegated?',
+      'Do you have a system to track what\'s in progress, what\'s done, and what\'s stuck?',
+      'Is your business able to function normally when you take a full week off?',
+      'Do you have a documented client onboarding process?',
+      'Do you track recurring errors or complaints and have a fix in place?',
+    ]
+  },
+  {
+    id:'sales',
+    label:'Sales & Revenue',
+    color:'#F5A623',
+    bg:'#FEF6E4',
+    textColor:'#633806',
+    desc:'Identify where money is being left on the table.',
+    questions:[
+      'Do you know your exact monthly revenue, profit margin, and cash runway?',
+      'Do you have a documented, repeatable sales process from first contact to close?',
+      'Do you follow up with every lead at least 3–5 times before marking them as lost?',
+      'Do you know your average lead-to-client conversion rate?',
+      'Is your pricing based on value delivered — not just time spent?',
+      'Do you have at least one upsell or cross-sell offer for existing clients?',
+      'Do you track where your best clients come from (referral, social, ads, etc.)?',
+      'Do you have a written proposal or pitch deck template ready to send in under 10 minutes?',
+      'Do you review your pricing at least once every 6 months?',
+      'Do you have a system for collecting and acting on lost-deal feedback?',
+    ]
+  },
+  {
+    id:'mktg',
+    label:'Marketing & Content',
+    color:'#378ADD',
+    bg:'#E6F1FB',
+    textColor:'#0C447C',
+    desc:'Find gaps in how you attract and nurture your ideal clients.',
+    questions:[
+      'Do you have a clear one-sentence description of who you help and what result you deliver?',
+      'Do you post consistently on at least one platform (3+ times per week)?',
+      'Do you have a lead magnet that grows your email list on autopilot?',
+      'Do you send a regular email newsletter to your audience?',
+      'Do you repurpose content across multiple platforms from a single source piece?',
+      'Do you know which content piece drove the most leads in the last 90 days?',
+      'Is your Instagram or LinkedIn bio optimised with a clear call to action?',
+      'Do you have a 90-day content plan mapped out in advance?',
+      'Do you track your content engagement and adjust based on what works?',
+      'Do you have a documented strategy for converting followers into paying clients?',
+    ]
+  },
+  {
+    id:'team',
+    label:'Team & People',
+    color:'#6C4EBD',
+    bg:'#EEEDFE',
+    textColor:'#3C3489',
+    desc:'Assess how well your people and culture support growth.',
+    questions:[
+      'Does every team member have a clear written job description?',
+      'Do you hold regular 1:1 check-ins with each team member or contractor?',
+      'Do you have a structured onboarding process for new hires?',
+      'Is there a documented performance review process in place?',
+      'Do team members know exactly what success looks like in their role?',
+      'Do you have a culture document or set of company values that guides daily decisions?',
+      'Do you know which tasks only you can do — vs. tasks you do purely out of habit?',
+      'Is your team growing faster than your systems can support?',
+      'Do you have a clear org chart, even if your team is small?',
+      'Do team members proactively solve problems without escalating everything to you?',
+    ]
+  },
+  {
+    id:'strategy',
+    label:'Strategy & Growth',
+    color:'#4CAF88',
+    bg:'#EAF6F1',
+    textColor:'#085041',
+    desc:'Evaluate whether your business is built to scale sustainably.',
+    questions:[
+      'Do you have a written 90-day business plan with clear goals and milestones?',
+      'Do you review your business metrics weekly (revenue, leads, conversion, churn)?',
+      'Do you have a clear vision for where your business will be in 12 months?',
+      'Is your business model designed to generate revenue while you sleep?',
+      'Do you know your top 3 constraints to growth right now?',
+      'Do you invest in your own professional development at least once a quarter?',
+      'Do you have a cash flow forecast for the next 3 months?',
+      'Is your business dependent on a single client, platform, or revenue stream?',
+      'Do you have a documented exit or succession plan, even a rough one?',
+      'If you had to double revenue in 6 months — do you have a clear plan for how?',
+    ]
+  }
+];
+
+let currentSection = 0;
+let answers = {};
+let lead = {};
+
+function startAudit() {
+  const fname = document.getElementById('f-fname').value.trim();
+  const lname = document.getElementById('f-lname').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const btype = document.getElementById('f-btype').value;
+  const years = document.getElementById('f-years').value;
+  const consent = document.getElementById('f-consent').checked;
+  if (!fname || !email || !btype || !years || !consent) {
+    showToast('Please fill in all required fields and check the consent box.');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showToast('Please enter a valid email address.');
+    return;
+  }
+  lead = {fname, lname, email, btype, years};
+  document.getElementById('screen-intro').classList.add('hidden');
+  document.getElementById('screen-audit').classList.remove('hidden');
+  buildTabs();
+  renderSection(0);
+}
+
+function buildTabs() {
+  const wrap = document.getElementById('section-tabs');
+  wrap.innerHTML = SECTIONS.map((s,i) => `<div class="section-tab" id="tab-${i}" style="flex:1"></div>`).join('');
+}
+
+function renderSection(idx) {
+  currentSection = idx;
+  const sec = SECTIONS[idx];
+  const totalQ = SECTIONS.length * 10;
+  const doneQ = idx * 10;
+  const pct = Math.round(doneQ / totalQ * 100);
+
+  document.getElementById('prog-section').textContent = `Section ${idx+1} of ${SECTIONS.length}: ${sec.label}`;
+  document.getElementById('prog-pct').textContent = `${pct}% complete`;
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('progress-label-top').textContent = `${doneQ} / ${totalQ} answered`;
+
+  SECTIONS.forEach((_,i) => {
+    const t = document.getElementById('tab-'+i);
+    t.className = 'section-tab' + (i < idx ? ' done' : i === idx ? ' active' : '');
+  });
+
+  document.getElementById('section-hero').innerHTML = `
+    <div class="section-label" style="background:${sec.bg};color:${sec.textColor}">${sec.label}</div>
+    <div class="section-title">${sec.label}</div>
+    <div class="section-desc">${sec.desc}</div>
+  `;
+
+  let qHtml = '';
+  sec.questions.forEach((q, qi) => {
+    const key = `${sec.id}_${qi}`;
+    const cur = answers[key] || '';
+    const globalNum = idx * 10 + qi + 1;
+    qHtml += `
+      <div class="q-item${cur ? ' answered' : ''}" id="qitem-${key}">
+        <div class="q-num">Q${globalNum} of 50</div>
+        <div class="q-text">${q}</div>
+        <div class="q-options">
+          <button class="q-opt${cur==='yes'?' yes':''}" onclick="answer('${key}','yes',this,'${sec.color}')">Yes</button>
+          <button class="q-opt${cur==='partial'?' partial':''}" onclick="answer('${key}','partial',this,'${sec.color}')">Partial</button>
+          <button class="q-opt${cur==='no'?' no':''}" onclick="answer('${key}','no',this,'${sec.color}')">No</button>
+        </div>
+      </div>`;
+  });
+  document.getElementById('questions-wrap').innerHTML = qHtml;
+
+  document.getElementById('btn-back').style.display = idx === 0 ? 'none' : '';
+  document.getElementById('btn-next').textContent = idx === SECTIONS.length - 1 ? 'See my results →' : 'Next section →';
+  updateNextBtn();
+  document.getElementById('main-card').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function answer(key, val, btn, color) {
+  answers[key] = val;
+  const opts = btn.closest('.q-options').querySelectorAll('.q-opt');
+  opts.forEach(b => b.className = 'q-opt');
+  btn.classList.add(val);
+  updateNextBtn();
+}
+
+function updateNextBtn() {
+  const sec = SECTIONS[currentSection];
+  const all = sec.questions.every((_,qi) => answers[`${sec.id}_${qi}`]);
+  document.getElementById('btn-next').disabled = !all;
+}
+
+function nextSection() {
+  if (currentSection < SECTIONS.length - 1) {
+    renderSection(currentSection + 1);
+  } else {
+    showResults();
+  }
+}
+
+function prevSection() {
+  if (currentSection > 0) renderSection(currentSection - 1);
+}
+
+function showResults() {
+  document.getElementById('screen-audit').classList.add('hidden');
+  document.getElementById('screen-results').classList.remove('hidden');
+  document.getElementById('main-card').scrollIntoView({behavior:'smooth',block:'start'});
+  document.getElementById('progress-label-top').textContent = 'Complete';
+
+  const name = lead.fname;
+  document.getElementById('r-name').textContent = `${name}'s Business Audit`;
+  document.getElementById('r-meta').textContent = `${lead.btype} · ${lead.years} · ${new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}`;
+  document.getElementById('r-email-confirm').textContent = lead.email;
+
+  let totalScore = 0;
+  let bottlenecks = [];
+  let gridHtml = '';
+  let sectionsHtml = '';
+
+  SECTIONS.forEach((sec, si) => {
+    let yes = 0, partial = 0;
+    sec.questions.forEach((q, qi) => {
+      const a = answers[`${sec.id}_${qi}`];
+      if (a === 'yes') yes++;
+      else if (a === 'partial') { partial++; }
+      else if (a === 'no') bottlenecks.push({sec: sec.label, q, color: sec.color});
+    });
+    const score = yes + Math.round(partial * 0.5);
+    totalScore += score;
+    const pct = Math.round(score / 10 * 100);
+
+    let pillBg, pillColor, verdict;
+    if (score >= 9)      { pillBg='#E1F5EE'; pillColor='#085041'; verdict='Strong — maintain and document further'; }
+    else if (score >= 7) { pillBg='#FEF6E4'; pillColor='#633806'; verdict='Good — close the top 2–3 gaps this quarter'; }
+    else if (score >= 5) { pillBg='#FAECE7'; pillColor='#712B13'; verdict='At risk — bottlenecks are actively costing you growth'; }
+    else                 { pillBg='#FCEBEB'; pillColor='#791F1F'; verdict='Critical — rebuild this area before you try to scale'; }
+
+    gridHtml += `
+      <div class="score-card">
+        <div class="sc-cat">${sec.label.replace(' & ',' &\n')}</div>
+        <div class="sc-num" style="color:${sec.color}">${score}</div>
+        <div class="sc-denom">/ 10</div>
+      </div>`;
+
+    sectionsHtml += `
+      <div class="rs-item">
+        <div class="rs-header">
+          <div class="rs-title">${sec.label}</div>
+          <div class="rs-pill" style="background:${pillBg};color:${pillColor}">${score} / 10</div>
+        </div>
+        <div class="rs-bar-track">
+          <div class="rs-bar-fill" style="width:${pct}%;background:${sec.color}"></div>
+        </div>
+        <div class="rs-verdict">${verdict}</div>
+      </div>`;
+  });
+
+  document.getElementById('r-total').textContent = totalScore;
+  document.getElementById('scores-grid').innerHTML = gridHtml;
+  document.getElementById('results-sections').innerHTML = sectionsHtml;
+
+  let healthText, healthBg, healthColor;
+  if (totalScore >= 40)      { healthText='Scale-ready'; healthBg='#E1F5EE'; healthColor='#085041'; }
+  else if (totalScore >= 30) { healthText='Growing'; healthBg='#FEF6E4'; healthColor='#633806'; }
+  else if (totalScore >= 20) { healthText='Developing'; healthBg='#FAECE7'; healthColor='#993C1D'; }
+  else                       { healthText='Needs attention'; healthBg='#FCEBEB'; healthColor='#A32D2D'; }
+
+  const hb = document.getElementById('r-health');
+  hb.textContent = healthText;
+  hb.style.background = healthBg;
+  hb.style.color = healthColor;
+
+  const top = bottlenecks.slice(0, 5);
+  if (top.length > 0) {
+    document.getElementById('bottleneck-list').innerHTML = top.map(b =>
+      `<div class="bb-item"><span class="bb-section">${b.sec}:</span> ${b.q}</div>`
+    ).join('');
+  } else {
+    document.getElementById('bottleneck-box').classList.add('hidden');
+  }
+
+  submitToFormspree(totalScore);
+}
+
+function submitToFormspree(score) {
+  const FORM_ID = 'xykqgpey';
+  const sectionScores = SECTIONS.map(sec => {
+    let yes = 0, partial = 0;
+    sec.questions.forEach((_,qi) => {
+      const a = answers[`${sec.id}_${qi}`];
+      if (a === 'yes') yes++;
+      else if (a === 'partial') partial++;
+    });
+    return `${sec.label}: ${yes + Math.round(partial*0.5)}/10`;
+  }).join(' | ');
+
+  if (FORM_ID === 'YOUR_FORMSPREE_ID') return;
+
+  fetch(`https://formspree.io/f/${FORM_ID}`, {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({
+      first_name: lead.fname,
+      last_name: lead.lname,
+      email: lead.email,
+      business_type: lead.btype,
+      years_in_business: lead.years,
+      overall_score: `${score}/50`,
+      section_scores: sectionScores,
+      _subject: `Business Audit Completed — ${lead.fname} ${lead.lname} (${score}/50)`,
+      _replyto: lead.email,
+    })
+  }).catch(() => {});
+}
+
+function shareResult() {
+  const total = document.getElementById('r-total').textContent;
+  const text = `I just completed the Business Audit by @anbarasimarimuthu and scored ${total}/50. Find out where YOUR business is losing time and money → [YOUR URL]`;
+  if (navigator.share) {
+    navigator.share({title:'My Business Audit Results', text}).catch(()=>{});
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => showToast('Share text copied to clipboard!'));
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
